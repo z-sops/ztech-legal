@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZTech Privacy Policy</title>
+<meta name="description" content="How the ZTech Lead Generation desktop app accesses, uses, stores and protects Google user data.">
+<style>
+:root{--bg:#ffffff;--fg:#1d1d1f;--muted:#5c5c66;--line:#e3e3e8;--link:#1a56db}
+@media (prefers-color-scheme:dark){:root{--bg:#141416;--fg:#ececf1;--muted:#a0a0ab;--line:#2c2c33;--link:#7aa2ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:48px 16px 64px}
+h1{font-size:28px;line-height:1.25;margin:0 0 8px}
+h2{font-size:19px;margin:32px 0 8px}
+p,li{color:var(--fg)}
+.muted{color:var(--muted);font-size:14px}
+a{color:var(--link)}
+ul{padding-left:22px}
+nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:28px;font-size:15px}
+footer{margin-top:48px;border-top:1px solid var(--line);padding-top:14px}
+code{font-size:14px}
+</style>
+</head><body><main>
+<nav><a href="./">ZTech</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></nav>
+<h1>Privacy Policy</h1>
+<p class="muted">ZTech Lead Generation by Zunitech · Effective 15 October 2026</p>
+
+<p>ZTech Lead Generation ("ZTech") is a desktop application that runs on your own Windows computer. This policy explains what ZTech does with data from your Google Account when you connect a Gmail or Google Workspace mailbox, and with the other data it keeps.</p>
+
+<h2>Google user data ZTech accesses</h2>
+<ul>
+<li><strong>Permission to send email</strong> (<code>https://www.googleapis.com/auth/gmail.send</code>). ZTech uses it only to send an email that you reviewed and approved, one message per click, and the follow-up emails you activated for that conversation. It also sends one test message from your mailbox to itself when you press "Check mailbox".</li>
+<li><strong>Message metadata</strong> (<code>https://www.googleapis.com/auth/gmail.metadata</code>). ZTech reads message headers only: From, Subject, In-Reply-To, References and the standard auto-reply and list headers. It uses them to find replies and unsubscribe requests to emails ZTech sent, so it can stop follow-ups and honour opt-outs. With this permission Google does not give ZTech the body or attachments of any message, and ZTech does not request them.</li>
+<li><strong>Your mailbox address</strong> and Gmail's mailbox history marker, so ZTech knows which mailbox it is connected to and where to continue checking for replies.</li>
+</ul>
+
+<h2>How the data is stored and protected</h2>
+<ul>
+<li>Everything ZTech keeps is stored on your computer. Zunitech does not run a server that receives your Google data, and ZTech does not send it to Zunitech or to anyone else.</li>
+<li>The Google sign-in credential (refresh token) is encrypted with Windows secure storage and is used only inside the app's main process. It is never shown on screen or written to logs.</li>
+<li>ZTech stores the headers it needs (for example, the Message-ID of each email it sent and of each reply it matched) together with your local send history.</li>
+</ul>
+
+<h2>Sharing</h2>
+<p>ZTech does not sell, rent, transfer or share Google user data. No human at Zunitech reads it. It is not used for advertising and is not used to train AI or machine-learning models.</p>
+
+<h2>Limited Use</h2>
+<p>ZTech's use and transfer of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+<h2>Other data on your computer</h2>
+<p>The business prospects you research, their public contact details, your drafts, approvals, consent and unsubscribe records stay in ZTech's local database on your computer. Unsubscribe and do-not-contact records are kept so that a person who opted out is not emailed again.</p>
+
+<h2>Removing access and deleting data</h2>
+<ul>
+<li>Press <strong>Disconnect</strong> next to the mailbox in ZTech (Settings › Mailboxes). ZTech asks Google to revoke its access and deletes the stored credential.</li>
+<li>You can also remove access at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+<li>Uninstalling ZTech and deleting its application data folder removes everything it stored on your computer.</li>
+</ul>
+
+<h2>Changes and contact</h2>
+<p>If this policy changes, the new version will be published on this page with a new effective date. Questions: <a href="mailto:z.sdevops1@gmail.com">z.sdevops1@gmail.com</a>.</p>
+<footer class="muted">ZTech is built by Zunitech, Karachi, Pakistan. Contact: <a href="mailto:z.sdevops1@gmail.com">z.sdevops1@gmail.com</a></footer>
+</main></body></html>
