@@ -93,6 +93,28 @@ inventory, the tracking and the gate; the rewrite is scheduled with F1 and
 needs the registered entity name, the governing law, the subprocessor list and
 the retention periods.
 
+### Review state (2026-10-20)
+
+The review branch is **pushed** and the review PR is **open as a draft**:
+https://github.com/z-sops/ztech-legal/pull/1
+(head `11eef2ed49d89ae15a8b7adb36868358c24a2284` -> base `main`).
+Nothing is merged, deployed or released.
+
+**CI HAS NOT RUN — 0 check runs on the PR.** The reason is a credential
+scope, not a defect: creating a GitHub Actions workflow file needs a token
+with the **`workflow`** scope, and the token the environment can obtain has
+only **`repo`**. GitHub refused the first push with *"refusing to allow a
+Personal Access Token to create or update workflow `.github/workflows/ci.yml`
+without `workflow` scope"*. A `git push --dry-run` does not detect this.
+
+The workflow file is the **tip commit of the local branch** and is the only
+thing not pushed; the local branch is exactly one commit ahead of the pushed
+branch, so `git push origin feat/cloud-saas-f0-foundation` with a
+workflow-scoped token is a plain fast-forward.
+
+Everything the CI would run has been run locally:
+`node scripts/check-legal.js` → 0 regressions, 11 known gaps.
+
 ### Next
 
 F1 (branding — which decides BRAND-1) and then the legal rewrite, which
