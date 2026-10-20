@@ -1,0 +1,84 @@
+name: CI
+
+# ZTech Legal - continuous integration.
+#
+# Added in F0. Before this workflow existed the legal documents had no build,
+# no test and no CI, so a change could silently break an internal link, drop an
+# effective date, remove a Google-scope disclosure, or reintroduce a legacy
+# product identifier.
+#
+# The gate is dependency-free: node scripts/check-legal.js. It fails on
+# REGRESSIONS (properties the documents have today and must keep) and reports
+# KNOWN GAPS without failing, because each gap needs a decision or a document
+# that engineering cannot produce. The gaps are tracked in
+# docs/LEGAL-GAPS.md.
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: legal documents
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate the documents
+        run: node scripts/check-legal.js
+
+      - name: The documents are valid UTF-8 and free of control characters
+        run: |
+          node -e "
+          const fs = require('node:fs');
+          const files = ['index.html', 'privacy.html', 'terms.html', 'README.md'];
+          let bad = 0;
+          for (const f of files) {
+            const buf = fs.readFileSync(f);
+            const text = buf.toString('utf8');
+            if (Buffer.from(text, 'utf8').compare(buf) !== 0) {
+              console.error(f + ' is not valid UTF-8');
+              bad++;
+            }
+            for (const ch of text) {
+              const c = ch.codePointAt(0);
+              if (c < 32 && c !== 9 && c !== 10 && c !== 13) {
+                console.error(f + ' contains a control character U+' + c.toString(16).toUpperCase());
+                bad++;
+                break;
+              }
+            }
+          }
+          if (bad) process.exit(1);
+          console.log('all documents are valid UTF-8 with no stray control characters');
+          "
+
+      - name: The documents render as HTML
+        run: |
+          node -e "
+          const fs = require('node:fs');
+          for (const f of ['index.html', 'privacy.html', 'terms.html']) {
+            const t = fs.readFileSync(f, 'utf8');
+            for (const tag of ['<!doctype html>', '<html', '</html>', '<main>', '</main>']) {
+              if (!t.toLowerCase().includes(tag)) {
+                console.error(f + ' is missing ' + tag);
+                process.exit(1);
+              }
+            }
+          }
+          console.log('all documents are structurally complete');
+          "
