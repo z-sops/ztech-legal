@@ -78,6 +78,17 @@ if (all.includes('Zunitech') && !all.includes('ZuniTech')) {
   gap('BRAND-1', 'the brand is written "Zunitech"; the product repository uses "ZuniTech"');
 }
 
+// The company hierarchy: Zuni Enterprise (parent) / ZuniTech (brand) /
+// ZTech Lead Generation (product). The registered entity details are a
+// clearly flagged placeholder until the business confirms them - they must
+// never be invented, and the placeholder must never be quietly removed.
+if (!all.includes('Zuni Enterprise')) {
+  gap('BRAND-2', 'the parent company "Zuni Enterprise" is not named in the documents');
+}
+if (!/TO BE CONFIRMED/i.test(all)) {
+  gap('BRAND-3', 'the flagged placeholder for the unconfirmed registration details is missing');
+}
+
 // Legacy product names must never reappear.
 const LEGACY = ['phone全球获客', 'phone-global-leads', 'com.whatsapp.automation'];
 for (const legacy of LEGACY) {

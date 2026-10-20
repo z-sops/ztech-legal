@@ -23,9 +23,10 @@ gap G-58 and it is rated Critical.
 
 | ID | Gap | Severity | Owner | Notes |
 |---|---|---|---|---|
-| BRAND-1 | The brand is written **"Zunitech"** in the legal documents but **"ZuniTech"** in the product repository | Low | Marketing | One spelling must win. The F1 rebrand decides it. |
+| ~~BRAND-1~~ | ~~The brand is written "Zunitech" in the legal documents but "ZuniTech" in the product repository~~ | — | **Closed in F1** | The documents now use **ZuniTech** everywhere. |
+| ~~BRAND-2~~ | ~~The parent company "Zuni Enterprise" was not named~~ | — | **Closed in F1** | Every document now states the hierarchy: **Zuni Enterprise** (parent) → **ZuniTech** (technology brand) → **ZTech Lead Generation** (product). |
+| BRAND-3 | The **registered entity name, registration number and registered address** are still unconfirmed | High | Legal | Every document carries a clearly flagged placeholder — `[Registered entity name, registration number and registered address: TO BE CONFIRMED …]`. `scripts/check-legal.js` FAILS if that placeholder is removed, so the gap cannot be forgotten. **Nothing is invented**: no entity name, number or address has been made up. |
 | ENTITY-1 | No governing-law clause and no jurisdiction | High | Legal | Required in both the privacy policy and the terms. |
-| ENTITY-2 | No registered entity name, registration number or registered address | High | Legal | The footer currently reads only *"ZTech is built by Zunitech, Karachi, Pakistan"*. |
 | ENTITY-3 | The only contact address is a personal Gmail address (`z.sdevops1@gmail.com`) | High | Ops | A monitored support address and a privacy contact are needed for DSAR intake. |
 | GDPR-1 | No DPA and no controller/processor role allocation | Critical | Legal | ZuniTech is a controller of lead data and a processor for ZuniSEO jobs. ZuniSEO's own `docs/DEPLOY.md` already flags this: *"Publish a privacy policy and a DPA before selling in the EU/UK"*. |
 | GDPR-2 | No subprocessor list | Critical | Legal | The real subprocessors are: Google (Gmail API), Meta (WhatsApp Cloud API), CoreClaw (`openapi.coreclaw.com`), the ZuniSEO service, and the LLM provider. None are named. |
@@ -53,4 +54,6 @@ gap G-58 and it is rated Critical.
 3. Update the status column here and record it in `docs/PROJECT-UPDATE.md`.
 4. The CI job fails only on **regressions** — a broken link, a missing
    effective date, a missing Google-scope disclosure, the loss of the
-   opt-out obligation, or the return of a legacy product identifier.
+   opt-out obligation, the return of a legacy product identifier, or the
+   removal of the flagged placeholder for the unconfirmed registration
+   details.
