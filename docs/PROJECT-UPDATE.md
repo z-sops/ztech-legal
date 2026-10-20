@@ -97,7 +97,7 @@ the retention periods.
 
 The review branch is **pushed** and the review PR is **open as a draft**:
 https://github.com/z-sops/ztech-legal/pull/1
-(head `11eef2ed49d89ae15a8b7adb36868358c24a2284` -> base `main`).
+(the head of the review branch -> base `main`).
 Nothing is merged, deployed or released.
 
 **CI HAS NOT RUN — 0 check runs on the PR.** The reason is a credential
