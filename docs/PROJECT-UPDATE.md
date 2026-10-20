@@ -108,6 +108,28 @@ create or update workflow `.github/workflows/ci.yml` without `workflow`
 scope"* — the available token had only `repo`. A `git push --dry-run` does
 **not** detect this; it passed, and only the real push was refused.
 
+### F2 — what the cloud product will need from these documents (2026-10-20)
+
+**Branch:** `feat/f2-cloud-saas-architecture` (based on the F0/F1 head
+`a7e4d4b`). **Status: DESIGN FOR REVIEW — no implementation has started.**
+
+The ZTech cloud architecture is in the ZTech Lead Generation repository,
+`docs/F2-CLOUD-SAAS-ARCHITECTURE.md`. It changes what these documents must
+eventually say, and it adds new obligations that are **not** yet written:
+
+| Gap | What F2 makes necessary |
+|---|---|
+| **SCOPE-1** | The documents describe a local-only, Gmail-only desktop app. F2 makes ZTech a multi-tenant cloud service that stores customer CRM data, runs background jobs, and calls paid providers. The rewrite becomes unavoidable. |
+| **ENTITY-1/2** | A registered entity name, number and address are still unconfirmed. The placeholder stays until they are. |
+| **GDPR-1/2/3** | F2 introduces real subprocessors at scale: the secret store, the job workers, the object store, the payment provider, and the per-workspace provider credentials. The subprocessor list and the transfer analysis must name them. |
+| **GDPR-4/5** | F2 adds a data-subject request flow across every workspace, a retention schedule for the new tables (jobs, invocations, invoices, audit log) and the platform-level data (an org's activity across workspaces). |
+| **LAW-2/3/4** | F2 makes the CRM a record of contacts, so the lawful basis, the AI disclosure (the LLM drafts pitches) and the ZuniSEO/paid-provider transfers all become material statements rather than edge cases. |
+| **New** | A **data-processing agreement** between a customer and ZuniTech, a **subprocessor list** the customer accepts, a **breach-notification** process, and a **platform-admin access** disclosure — the break-glass model in F2 §5.7 must be disclosed to customers, including the fact that a customer sees a banner when an administrator accesses their workspace. |
+
+**Nothing in these documents is changed by F2 at this stage.** The F2 plan
+records the obligations; the rewrite is a separate, business-approved work item
+that the F2 milestones gate.
+
 ### Next
 
 F1 (branding — which decides BRAND-1) and then the legal rewrite, which
