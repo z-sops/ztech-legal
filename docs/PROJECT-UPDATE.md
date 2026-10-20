@@ -100,20 +100,13 @@ https://github.com/z-sops/ztech-legal/pull/1
 (the head of the review branch -> base `main`).
 Nothing is merged, deployed or released.
 
-**CI HAS NOT RUN — 0 check runs on the PR.** The reason is a credential
-scope, not a defect: creating a GitHub Actions workflow file needs a token
-with the **`workflow`** scope, and the token the environment can obtain has
-only **`repo`**. GitHub refused the first push with *"refusing to allow a
-Personal Access Token to create or update workflow `.github/workflows/ci.yml`
-without `workflow` scope"*. A `git push --dry-run` does not detect this.
+**CI IS GREEN:** https://github.com/z-sops/ztech-legal/actions/runs/39396564845
+— 1/1 job (the legal document check: 0 regressions, 11 known gaps).
 
-The workflow file is the **tip commit of the local branch** and is the only
-thing not pushed; the local branch is exactly one commit ahead of the pushed
-branch, so `git push origin feat/cloud-saas-f0-foundation` with a
-workflow-scoped token is a plain fast-forward.
-
-Everything the CI would run has been run locally:
-`node scripts/check-legal.js` → 0 regressions, 11 known gaps.
+The first push was refused with *"refusing to allow a Personal Access Token to
+create or update workflow `.github/workflows/ci.yml` without `workflow`
+scope"* — the available token had only `repo`. A `git push --dry-run` does
+**not** detect this; it passed, and only the real push was refused.
 
 ### Next
 
